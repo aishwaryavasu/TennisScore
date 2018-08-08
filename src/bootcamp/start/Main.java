@@ -15,7 +15,7 @@ public class Main {
 		Player p1 = new Player('A');
 		Player p2 = new Player('B');
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		String inp="AABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAAAABAA";
+		String inp="ABABABABB";
 	//	while(true) {
 			tsb=new TennisScoreBoard(p1, p2);
 	//		inp=br.readLine();
