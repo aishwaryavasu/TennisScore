@@ -15,7 +15,7 @@ public class Main {
 		Player p1 = new Player('A');
 		Player p2 = new Player('B');
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		String inp="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+		String inp="AABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAABBABBAABAAAABAA";
 	//	while(true) {
 			tsb=new TennisScoreBoard(p1, p2);
 	//		inp=br.readLine();
@@ -25,9 +25,9 @@ public class Main {
 					tsb.update(p1);
 				else
 					tsb.update(p2);
-				System.out.println(tsb);
+				//System.out.println(tsb);
 			}
-			//System.out.println(tsb);
+			System.out.println(tsb);
 	//	}
 		
 	}
