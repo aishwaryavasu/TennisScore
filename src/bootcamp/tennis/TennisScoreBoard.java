@@ -4,6 +4,12 @@ public class TennisScoreBoard {
 	
 	private Player p1, p2;
 	private boolean tie;
+	public static int GAME_WIN = 4;
+	public static int TIE_WIN = 7;
+	public static int SET_WIN = 6;
+	public static int MIN_DIFF = 2;
+
+
 	public TennisScoreBoard(Player p1, Player p2){
 		this.p1 = p1;
 		this.p2 = p2;
@@ -20,7 +26,17 @@ public class TennisScoreBoard {
 			larger = p1;
 			smaller = p2;
 		}
-		if(larger.getPoints() >= 4 && (larger.getPoints() - smaller.getPoints()) >= 2){
+		if(tie){
+			if(larger.getPoints() >= TIE_WIN && (larger.getPoints() - smaller.getPoints()) >= MIN_DIFF){
+				larger.incrSets();
+				tie=false;
+				p1.resetPoints();
+				p2.resetPoints();
+				p1.resetGames();
+				p2.resetGames();
+			}
+		}
+		else if(larger.getPoints() >= GAME_WIN && (larger.getPoints() - smaller.getPoints()) >= MIN_DIFF){
 			larger.incrGames();
 			p1.resetPoints();
 			p2.resetPoints();
@@ -33,25 +49,25 @@ public class TennisScoreBoard {
 			larger = p1;
 			smaller = p2;
 		}
-		if (larger.getGames() >= 6 && (larger.getGames() - smaller.getGames()) >= 2) {
+		if (larger.getGames() >= SET_WIN && (larger.getGames() - smaller.getGames()) >= 2) {
 			larger.incrSets();
 			p1.resetGames();
 			p2.resetGames();
 		}
-		if (larger.getGames() == 6 && smaller.getGames() == 6) {
+		if (larger.getGames() == SET_WIN && smaller.getGames() == SET_WIN) {
 			tie = true;
 		}
 	}
 	
 	public void update(Player p){
 		updatePoints(p);
-		if(tie){
-			playTieBreaker();
-		}
-		else {
+//		if(tie){
+//			playTieBreaker();
+//		}
+//		else {
 			updateGames();
 			updateSets();
-		}
+//		}
 	}
 	private void playTieBreaker(){
 		Player larger = p2, smaller = p1;
@@ -59,14 +75,7 @@ public class TennisScoreBoard {
 			larger = p1;
 			smaller = p2;
 		}
-		if(larger.getPoints() >= 7 && (larger.getPoints() - smaller.getPoints()) >= 2){
-			larger.incrSets();
-			tie=false;
-			p1.resetPoints();
-			p2.resetPoints();
-			p1.resetGames();
-			p2.resetGames();
-		}
+
 	}
 	private void computePoints(){
 		Player larger = p2, smaller = p1;
