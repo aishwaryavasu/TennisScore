@@ -4,9 +4,9 @@ public class TennisScoreBoard {
 	
 	private Player p1, p2;
 	private boolean tie;
-	public static int GAME_WIN = 4;
-	public static int TIE_WIN = 7;
-	public static int SET_WIN = 6;
+	public static int MAX_POINTS = 4;
+	public static int MAX_TIE_POINTS = 7;
+	public static int MAX_GAMES = 6;
 	public static int MIN_DIFF = 2;
 
 
@@ -27,7 +27,7 @@ public class TennisScoreBoard {
 			smaller = p2;
 		}
 		if(tie){
-			if(larger.getPoints() >= TIE_WIN && (larger.getPoints() - smaller.getPoints()) >= MIN_DIFF){
+			if(larger.getPoints() >= MAX_TIE_POINTS && (larger.getPoints() - smaller.getPoints()) >= MIN_DIFF){
 				larger.incrSets();
 				tie=false;
 				p1.resetPoints();
@@ -36,11 +36,12 @@ public class TennisScoreBoard {
 				p2.resetGames();
 			}
 		}
-		else if(larger.getPoints() >= GAME_WIN && (larger.getPoints() - smaller.getPoints()) >= MIN_DIFF){
+		else if(larger.getPoints() >= MAX_POINTS && (larger.getPoints() - smaller.getPoints()) >= MIN_DIFF){
 			larger.incrGames();
 			p1.resetPoints();
 			p2.resetPoints();
 		}
+
 	}
 	
 	private void updateSets() {
@@ -49,12 +50,12 @@ public class TennisScoreBoard {
 			larger = p1;
 			smaller = p2;
 		}
-		if (larger.getGames() >= SET_WIN && (larger.getGames() - smaller.getGames()) >= 2) {
+		if (larger.getGames() >= MAX_GAMES && (larger.getGames() - smaller.getGames()) >= 2) {
 			larger.incrSets();
 			p1.resetGames();
 			p2.resetGames();
 		}
-		if (larger.getGames() == SET_WIN && smaller.getGames() == SET_WIN) {
+		if (larger.getGames() == MAX_GAMES && smaller.getGames() == MAX_GAMES) {
 			tie = true;
 		}
 	}

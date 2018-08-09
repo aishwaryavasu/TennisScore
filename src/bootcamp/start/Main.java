@@ -15,7 +15,7 @@ public class Main {
 		Player p1 = new Player('A');
 		Player p2 = new Player('B');
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-		String inp="ABABABAAB";
+		String inp="AAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBBAAAABBBBABABABABABABABAAB";
 			tsb=new TennisScoreBoard(p1, p2);
 			for(int i=0;i<inp.length();i++) {
 				char c=inp.charAt(i);
