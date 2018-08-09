@@ -61,22 +61,10 @@ public class TennisScoreBoard {
 	
 	public void update(Player p){
 		updatePoints(p);
-//		if(tie){
-//			playTieBreaker();
-//		}
-//		else {
-			updateGames();
-			updateSets();
-//		}
+		updateGames();
+		updateSets();
 	}
-	private void playTieBreaker(){
-		Player larger = p2, smaller = p1;
-		if(p1.getPoints() >= p2.getPoints()){
-			larger = p1;
-			smaller = p2;
-		}
 
-	}
 	private void computePoints(){
 		Player larger = p2, smaller = p1;
 		if(p1.getPoints() >= p2.getPoints()){
@@ -111,7 +99,7 @@ public class TennisScoreBoard {
 		sb.append("player:\t"+p1.getName()+"\t"+p2.getName()+"\n")
 		.append("sets:\t"+p1.getSets()+"\t"+p2.getSets()+"\n")
 		.append("games:\t"+p1.getGames()+"\t"+p2.getGames()+"\n")
-		.append("points:\t"+p1.getPointsFormatted()+"\t"+p2.getPointsFormatted()+"\nTie" + tie);
+		.append("points:\t"+p1.getPointsFormatted()+"\t"+p2.getPointsFormatted()+"\n");
 		return sb.toString();
 	}
 }
