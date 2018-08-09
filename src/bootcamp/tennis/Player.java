@@ -7,7 +7,14 @@ public class Player {
 	private int games;
 	private int points;
 	private String pointsFormatted;
-	
+
+	public Player(char name) {
+		this.name=name;
+		this.sets=0;
+		this.games=0;
+		this.points=0;
+	}
+
 	public char getName() {
 		return name;
 	}
@@ -32,12 +39,6 @@ public class Player {
 		this.pointsFormatted = pointsFormatted;
 	}
 
-	public Player(char name) {
-		this.name=name;
-		this.sets=0;
-		this.games=0;
-		this.points=0;
-	}
 	
 	public void incrPoints() {
 		this.points++;

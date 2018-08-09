@@ -15,8 +15,14 @@ public class TennisScoreBoard {
 		this.p2 = p2;
 		tie = false;
 	}
-	
-	private void updatePoints(Player p){
+    public void update(Player p){
+        updatePoints(p);
+        updateGames();
+        updateSets();
+    }
+
+
+    private void updatePoints(Player p){
 		p.incrPoints();
 	}
 	
@@ -59,14 +65,8 @@ public class TennisScoreBoard {
 			tie = true;
 		}
 	}
-	
-	public void update(Player p){
-		updatePoints(p);
-		updateGames();
-		updateSets();
-	}
 
-	private void computePoints(){
+	private void computeDisplayPoints(){
 		Player larger = p2, smaller = p1;
 		if(p1.getPoints() >= p2.getPoints()){
 			larger = p1;
@@ -95,7 +95,7 @@ public class TennisScoreBoard {
 	
 	@Override
 	public String toString(){
-		computePoints();
+		computeDisplayPoints();
 		StringBuilder sb=new StringBuilder();
 		sb.append("player:\t"+p1.getName()+"\t"+p2.getName()+"\n")
 		.append("sets:\t"+p1.getSets()+"\t"+p2.getSets()+"\n")
